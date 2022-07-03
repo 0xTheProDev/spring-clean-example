@@ -1,10 +1,12 @@
-package thepro.dev.springcleanexample;
+package thepro.dev.springcleanexample.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import thepro.dev.springcleanexample.Greeting;
 
 @RestController
 public class GreetingController {
