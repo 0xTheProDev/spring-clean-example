@@ -4,6 +4,7 @@
   "editor.formatOnSave": true,
   "java.configuration.updateBuildConfiguration": "interactive",
   "files.associations": {
-    "mvnw": "shellscript"
+    "mvnw": "shellscript",
+    "application.properties.example": "properties"
   }
 }
