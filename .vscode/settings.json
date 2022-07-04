@@ -2,7 +2,7 @@
   "editor.tabSize": 4,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.configuration.updateBuildConfiguration": "automatic",
   "files.associations": {
     "mvnw": "shellscript",
     "application.properties.example": "properties"
