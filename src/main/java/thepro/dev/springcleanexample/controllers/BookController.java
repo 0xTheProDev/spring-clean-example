@@ -42,7 +42,16 @@ public class BookController {
         return new BookDto(bookService.addBook(book));
     }
 
-    @DeleteMapping(path = "{id}")
+    @PostMapping(path = "/{id}/authors/{authorId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public @ResponseBody BookDto addAuthor(@PathVariable("id") Long bookId, @PathVariable("authorId") Long authorId) {
+        return bookService.addAuthorById(bookId, authorId)
+                .map(BookDto::new)
+                .orElseThrow(this::throwNotFoundException);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBook(@PathVariable("id") Long id) {
         bookService.deleteBook(id);
     }
@@ -58,19 +67,30 @@ public class BookController {
     public @ResponseBody BookDto getBookById(@PathVariable("id") Long id) {
         return bookService.findBookById(id)
                 .map(BookDto::new)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(this::throwNotFoundException);
+    }
+
+    @DeleteMapping(path = "/{id}/authors/{authorId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removeAuthor(@PathVariable("id") Long bookId, @PathVariable("authorId") Long authorId) {
+        bookService.removeAuthorById(bookId, authorId);
     }
 
     @PatchMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.RESET_CONTENT)
     public @ResponseBody BookDto updateBook(@PathVariable("id") Long id, @RequestBody UpdateBookDto updateBookDto) {
         Book book = new Book(updateBookDto.getName());
         return bookService.updateBook(id, book).map(BookDto::new)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(this::throwNotFoundException);
     }
 
     @PutMapping()
     public @ResponseBody BookDto updateOrCreateBook(@RequestBody UpdateBookDto updateBookDto) {
         Book book = new Book(updateBookDto.getId().get(), updateBookDto.getName());
         return new BookDto(bookService.saveBook(book));
+    }
+
+    private ResponseStatusException throwNotFoundException() {
+        return new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 }

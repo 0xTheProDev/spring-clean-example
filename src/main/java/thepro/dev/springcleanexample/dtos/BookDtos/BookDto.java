@@ -1,5 +1,6 @@
 package thepro.dev.springcleanexample.dtos.BookDtos;
 
+import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -9,7 +10,7 @@ import thepro.dev.springcleanexample.entities.Book;
 public class BookDto {
     private Long id;
     private String name;
-    private Set<AuthorDto> authors;
+    private Set<AuthorDto> authors = Collections.EMPTY_SET;
 
     public BookDto() {
     }
@@ -53,6 +54,10 @@ public class BookDto {
 
     public void addAuthor(AuthorDto author) {
         authors.add(author);
+    }
+
+    public void removeAuthor(AuthorDto author) {
+        authors.removeIf((prevAuthor) -> prevAuthor.getId().equals(author.getId()));
     }
 
     public void resetAuthors() {

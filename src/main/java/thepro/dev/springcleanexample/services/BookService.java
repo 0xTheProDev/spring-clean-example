@@ -5,20 +5,37 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import thepro.dev.springcleanexample.entities.Author;
 import thepro.dev.springcleanexample.entities.Book;
+import thepro.dev.springcleanexample.repositories.AuthorRepository;
 import thepro.dev.springcleanexample.repositories.BookRepository;
 
 @Service
 public class BookService {
+    private AuthorRepository authorRepository;
     private BookRepository bookRepository;
 
     @Autowired
-    BookService(BookRepository bookRepository) {
+    BookService(AuthorRepository authorRepository, BookRepository bookRepository) {
+        this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
     }
 
     public Book addBook(Book book) {
         return bookRepository.save(book);
+    }
+
+    public Optional<Book> addAuthorById(Long bookId, Long authorId) {
+        Optional<Author> author = authorRepository.findById(authorId);
+
+        if (author.isEmpty()) {
+            return Optional.empty();
+        }
+
+        return bookRepository.findById(bookId).map(((book) -> {
+            book.addAuthor(author.get());
+            return bookRepository.save(book);
+        }));
     }
 
     public void deleteBook(Long id) {
@@ -41,6 +58,14 @@ public class BookService {
         return bookRepository.findByName(name);
     }
 
+    public Optional<Book> removeAuthorById(Long bookId, Long authorId) {
+        return bookRepository.findById(bookId).map((book) -> {
+            Author author = new Author(authorId);
+            book.removeAuthor(author);
+            return bookRepository.save(book);
+        });
+    }
+
     public Book saveBook(Book book) {
         return bookRepository.save(book);
     }
@@ -49,6 +74,7 @@ public class BookService {
         if (!bookRepository.existsById(id)) {
             return Optional.empty();
         }
+
         book.setId(id);
         return Optional.of(bookRepository.save(book));
     }
