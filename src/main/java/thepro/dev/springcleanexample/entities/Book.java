@@ -1,9 +1,14 @@
 package thepro.dev.springcleanexample.entities;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity(name = "books")
 public class Book {
@@ -12,6 +17,10 @@ public class Book {
     private Long id;
 
     private String name;
+
+    @ManyToMany
+    @JoinTable(name = "books_authors", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private Set<Author> authors;
 
     public Book() {
     }
@@ -39,5 +48,21 @@ public class Book {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    public void addAuthor(Author author) {
+        authors.add(author);
+    }
+
+    public void resetAuthors() {
+        authors.clear();
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
     }
 }

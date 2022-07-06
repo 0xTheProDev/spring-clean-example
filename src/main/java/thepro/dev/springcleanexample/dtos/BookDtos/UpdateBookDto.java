@@ -1,15 +1,17 @@
 package thepro.dev.springcleanexample.dtos.BookDtos;
 
+import java.util.Optional;
+
 public class UpdateBookDto {
-    private Long id;
+    private Optional<Long> id;
     private String name;
 
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.id = Optional.of(id);
     }
 
     public String getName() {
