@@ -30,8 +30,7 @@ import thepro.dev.springcleanexample.services.BookService;
 public class BookController {
     private BookService bookService;
 
-    @Autowired
-    BookController(BookService bookService) {
+    BookController(@Autowired BookService bookService) {
         this.bookService = bookService;
     }
 

@@ -6,19 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import thepro.dev.springcleanexample.entities.Author;
+import thepro.dev.springcleanexample.entities.Book;
 import thepro.dev.springcleanexample.repositories.AuthorRepository;
+import thepro.dev.springcleanexample.repositories.BookRepository;
 
 @Service
 public class AuthorService {
     private AuthorRepository authorRepository;
+    private BookRepository bookRepository;
 
-    @Autowired
-    public AuthorService(AuthorRepository authorRepository) {
+    public AuthorService(@Autowired AuthorRepository authorRepository, @Autowired BookRepository bookRepository) {
         this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
     }
 
     public Author addAuthor(Author author) {
         return authorRepository.save(author);
+    }
+
+    public Optional<Book> addBook(Long id, Book book) {
+        Optional<Author> author = authorRepository.findById(id);
+        if (author.isEmpty()) {
+            return Optional.empty();
+        }
+
+        book.addAuthor(author.get());
+        return Optional.of(this.bookRepository.save(book));
     }
 
     public void deleteAuthor(Long id) {
@@ -41,8 +54,16 @@ public class AuthorService {
         return authorRepository.findByLastName(lastName);
     }
 
-    public Author updateAuthor(Long id, Author author) {
-        author.setId(id);
+    public Author saveAuthor(Author author) {
         return authorRepository.save(author);
+    }
+
+    public Optional<Author> updateAuthor(Long id, Author author) {
+        if (!authorRepository.existsById(id)) {
+            return Optional.empty();
+        }
+
+        author.setId(id);
+        return Optional.of(authorRepository.save(author));
     }
 }
