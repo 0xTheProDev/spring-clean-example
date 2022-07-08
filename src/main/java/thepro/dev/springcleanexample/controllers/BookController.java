@@ -28,7 +28,7 @@ import thepro.dev.springcleanexample.services.BookService;
 @RestController
 @RequestMapping(path = "/api/v1/books", consumes = "application/json", produces = "application/json")
 public class BookController {
-    private BookService bookService;
+    private final BookService bookService;
 
     BookController(@Autowired BookService bookService) {
         this.bookService = bookService;

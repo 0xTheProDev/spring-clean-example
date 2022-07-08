@@ -31,7 +31,7 @@ import thepro.dev.springcleanexample.services.AuthorService;
 @RestController
 @RequestMapping(path = "/api/v1/authors", consumes = "application/json", produces = "application/json")
 public class AuthorController {
-    private AuthorService authorService;
+    private final AuthorService authorService;
 
     AuthorController(@Autowired AuthorService authorService) {
         this.authorService = authorService;

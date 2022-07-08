@@ -12,8 +12,8 @@ import thepro.dev.springcleanexample.repositories.BookRepository;
 
 @Service
 public class BookService {
-    private AuthorRepository authorRepository;
-    private BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
+    private final BookRepository bookRepository;
 
     BookService(@Autowired AuthorRepository authorRepository, @Autowired BookRepository bookRepository) {
         this.authorRepository = authorRepository;
