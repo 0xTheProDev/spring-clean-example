@@ -1,6 +1,6 @@
 package thepro.dev.springcleanexample.entities;
 
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,7 +20,7 @@ public class Author {
     private String lastName;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books = Collections.EMPTY_SET;
+    private Set<Book> books = new HashSet<Book>();
 
     public Author() {
     }

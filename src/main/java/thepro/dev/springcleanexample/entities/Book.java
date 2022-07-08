@@ -1,6 +1,6 @@
 package thepro.dev.springcleanexample.entities;
 
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -21,7 +21,7 @@ public class Book {
 
     @ManyToMany
     @JoinTable(name = "books_authors", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors = Collections.EMPTY_SET;
+    private Set<Author> authors = new HashSet<Author>();
 
     public Book() {
     }

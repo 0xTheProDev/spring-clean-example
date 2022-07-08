@@ -64,7 +64,7 @@ public class BookController {
 
     @GetMapping(path = "/{id}")
     public @ResponseBody BookDto getBookById(@PathVariable("id") Long id) {
-        return bookService.findBookById(id)
+        return bookService.findBook(id)
                 .map(BookDto::new)
                 .orElseThrow(this::throwNotFoundException);
     }

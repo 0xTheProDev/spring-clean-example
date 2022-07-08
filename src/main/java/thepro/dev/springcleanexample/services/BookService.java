@@ -49,11 +49,11 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Optional<Book> findBookById(Long id) {
+    public Optional<Book> findBook(Long id) {
         return bookRepository.findById(id);
     }
 
-    public Optional<Book> findBookByName(String name) {
+    public Optional<Book> findBook(String name) {
         return bookRepository.findByName(name);
     }
 

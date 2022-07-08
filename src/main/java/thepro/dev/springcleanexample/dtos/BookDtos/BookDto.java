@@ -1,6 +1,6 @@
 package thepro.dev.springcleanexample.dtos.BookDtos;
 
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -10,7 +10,7 @@ import thepro.dev.springcleanexample.entities.Book;
 public class BookDto {
     private Long id;
     private String name;
-    private Set<AuthorDto> authors = Collections.EMPTY_SET;
+    private Set<AuthorDto> authors = new HashSet<AuthorDto>();
 
     public BookDto() {
     }
