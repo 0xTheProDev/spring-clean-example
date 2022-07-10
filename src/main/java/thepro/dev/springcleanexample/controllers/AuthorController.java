@@ -60,7 +60,7 @@ public class AuthorController {
     }
 
     @GetMapping
-    public @ResponseBody List<AuthorDto> getAllBooks() {
+    public @ResponseBody List<AuthorDto> getAllAuthors() {
         return StreamSupport.stream(authorService.findAllAuthors().spliterator(), false)
                 .map(AuthorDto::new)
                 .collect(Collectors.toList());
@@ -87,7 +87,7 @@ public class AuthorController {
 
     @PatchMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.RESET_CONTENT)
-    public @ResponseBody AuthorDto updateBook(@PathVariable("id") Long id,
+    public @ResponseBody AuthorDto updateAuthor(@PathVariable("id") Long id,
             @RequestBody UpdateAuthorDto updateAuthorDto) {
         Author author = new Author(updateAuthorDto.getFirstName(), updateAuthorDto.getLastName());
         return authorService.updateAuthor(id, author).map(AuthorDto::new)
@@ -95,7 +95,7 @@ public class AuthorController {
     }
 
     @PutMapping()
-    public @ResponseBody AuthorDto updateOrCreateBook(@RequestBody UpdateAuthorDto updateAuthorDto) {
+    public @ResponseBody AuthorDto updateOrCreateAuthor(@RequestBody UpdateAuthorDto updateAuthorDto) {
         Author author = new Author(updateAuthorDto.getId().get(), updateAuthorDto.getFirstName(),
                 updateAuthorDto.getLastName());
         return new AuthorDto(authorService.saveAuthor(author));

@@ -7,6 +7,17 @@ public class UpdateAuthorDto {
     private String firstName;
     private String lastName;
 
+    public UpdateAuthorDto(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public UpdateAuthorDto(Long id, String firstName, String lastName) {
+        this.id = Optional.of(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public Optional<Long> getId() {
         return id;
     }
