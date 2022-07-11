@@ -28,13 +28,27 @@ This example showcases Repository Pattern in Hexagonal Architecture _(also known
 
 - For Windows users:
 
-  ```sh
+  ```powershell
   $ mvnw spring-boot:run
   ```
 
 ## Testing
 
-_TBA_
+- Run test suite along with Coverage reporting:
+
+  ```sh
+  $ ./mvnw jacoco:prepare-agent test install jacoco:report
+  ```
+
+  or for Windows
+
+  ```powershell
+  $ mvnw jacoco:prepare-agent test install jacoco:report
+  ```
+
+## Swagger UI
+
+- Open Swagger UI at `localhost:8080/swagger-ui` after running the application.
 
 ## License
 
