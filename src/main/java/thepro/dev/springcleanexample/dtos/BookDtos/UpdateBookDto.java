@@ -6,6 +6,11 @@ public class UpdateBookDto {
     private Optional<Long> id;
     private String name;
 
+    public UpdateBookDto(Long id, String name) {
+        this.id = Optional.of(id);
+        this.name = name;
+    }
+
     public Optional<Long> getId() {
         return id;
     }
