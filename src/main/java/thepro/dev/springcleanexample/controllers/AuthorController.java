@@ -6,6 +6,7 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -29,7 +30,7 @@ import thepro.dev.springcleanexample.entities.Book;
 import thepro.dev.springcleanexample.services.AuthorService;
 
 @RestController
-@RequestMapping(path = "/api/v1/authors", consumes = "application/json", produces = "application/json")
+@RequestMapping(path = "/api/v1/authors", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AuthorController {
     private AuthorService authorService;
 
@@ -37,14 +38,14 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody AuthorDto addAuthor(@RequestBody AddAuthorDto addAuthorDto) {
         Author author = new Author(addAuthorDto.getFirstName(), addAuthorDto.getLastName());
         return new AuthorDto(authorService.addAuthor(author));
     }
 
-    @PostMapping(path = "/{id}/books")
+    @PostMapping(path = "/{id}/books", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody BookDto addBook(@PathVariable("id") Long authorId, @RequestBody AddBookDto addBookDto) {
         Book book = new Book(addBookDto.getName());
@@ -85,7 +86,7 @@ public class AuthorController {
                 .map(BookDto::new).collect(Collectors.toList());
     }
 
-    @PatchMapping(path = "/{id}")
+    @PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.RESET_CONTENT)
     public @ResponseBody AuthorDto updateAuthor(@PathVariable("id") Long id,
             @RequestBody UpdateAuthorDto updateAuthorDto) {
@@ -94,7 +95,7 @@ public class AuthorController {
                 .orElseThrow(this::throwNotFoundException);
     }
 
-    @PutMapping()
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody AuthorDto updateOrCreateAuthor(@RequestBody UpdateAuthorDto updateAuthorDto) {
         Author author = new Author(updateAuthorDto.getId().get(), updateAuthorDto.getFirstName(),
                 updateAuthorDto.getLastName());

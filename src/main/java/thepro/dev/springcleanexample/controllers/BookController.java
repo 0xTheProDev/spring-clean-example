@@ -6,6 +6,7 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -26,7 +27,7 @@ import thepro.dev.springcleanexample.entities.Book;
 import thepro.dev.springcleanexample.services.BookService;
 
 @RestController
-@RequestMapping(path = "/api/v1/books", consumes = "application/json", produces = "application/json")
+@RequestMapping(path = "/api/v1/books", produces = MediaType.APPLICATION_JSON_VALUE)
 public class BookController {
     private BookService bookService;
 
@@ -34,14 +35,14 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody BookDto addBook(@RequestBody AddBookDto addBookDto) {
         Book book = new Book(addBookDto.getName());
         return new BookDto(bookService.addBook(book));
     }
 
-    @PostMapping(path = "/{id}/authors/{authorId}")
+    @PostMapping(path = "/{id}/authors/{authorId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody BookDto addAuthor(@PathVariable("id") Long bookId, @PathVariable("authorId") Long authorId) {
         return bookService.addAuthorById(bookId, authorId)
@@ -75,7 +76,7 @@ public class BookController {
         bookService.removeAuthorById(bookId, authorId);
     }
 
-    @PatchMapping(path = "/{id}")
+    @PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.RESET_CONTENT)
     public @ResponseBody BookDto updateBook(@PathVariable("id") Long id, @RequestBody UpdateBookDto updateBookDto) {
         Book book = new Book(updateBookDto.getName());
@@ -83,7 +84,7 @@ public class BookController {
                 .orElseThrow(this::throwNotFoundException);
     }
 
-    @PutMapping()
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody BookDto updateOrCreateBook(@RequestBody UpdateBookDto updateBookDto) {
         Book book = new Book(updateBookDto.getId().get(), updateBookDto.getName());
         return new BookDto(bookService.saveBook(book));
