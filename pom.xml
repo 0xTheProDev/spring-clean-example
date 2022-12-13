@@ -13,22 +13,22 @@
 	<name>spring-clean-example</name>
 	<description>Clean Architecture Example with Spring</description>
 	<scm>
-		<connection>scm:git:git@github.com:Progyan1997/spring-clean-example.git</connection>
-		<developerConnection>scm:git:git@github.com:Progyan1997/spring-clean-example.git</developerConnection>
-		<url>https://github.com/Progyan1997/spring-clean-example</url>
+		<connection>scm:git:git@github.com:0xTheProDev/spring-clean-example.git</connection>
+		<developerConnection>scm:git:git@github.com:0xTheProDev/spring-clean-example.git</developerConnection>
+		<url>https://github.com/0xTheProDev/spring-clean-example</url>
 	</scm>
 	<licenses>
 		<license>
 			<name>MIT</name>
-			<url>https://github.com/Progyan1997/spring-clean-example/blob/main/LICENSE</url>
+			<url>https://github.com/0xTheProDev/spring-clean-example/blob/main/LICENSE</url>
 		</license>
 	</licenses>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/Progyan1997/spring-clean-example/issues</url>
+		<url>https://github.com/0xTheProDev/spring-clean-example/issues</url>
 	</issueManagement>
 	<developers>
 		<developer>

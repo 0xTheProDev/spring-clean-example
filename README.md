@@ -5,12 +5,12 @@
 [![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black)](https://tomcat.apache.org/)
 [![OpenAPI](https://img.shields.io/badge/openapi-6BA539?style=for-the-badge&logo=openapi-initiative&logoColor=fff)](https://www.openapis.org/)
 [![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)](https://graphql.org/)
-[![Open Issues](https://img.shields.io/github/issues-raw/Progyan1997/spring-clean-example?style=for-the-badge)](https://github.com/Progyan1997/spring-clean-example/issues)
-[![Closed Issues](https://img.shields.io/github/issues-closed-raw/Progyan1997/spring-clean-example?style=for-the-badge)](https://github.com/Progyan1997/spring-clean-example/issues?q=is%3Aissue+is%3Aclosed)
-[![Open Pulls](https://img.shields.io/github/issues-pr-raw/Progyan1997/spring-clean-example?style=for-the-badge)](https://github.com/Progyan1997/spring-clean-example/pulls)
-[![Closed Pulls](https://img.shields.io/github/issues-pr-closed-raw/Progyan1997/spring-clean-example?style=for-the-badge)](https://github.com/Progyan1997/spring-clean-example/pulls?q=is%3Apr+is%3Aclosed)
-[![Contributors](https://img.shields.io/github/contributors/Progyan1997/spring-clean-example?style=for-the-badge)](https://github.com/Progyan1997/spring-clean-example/graphs/contributors)
-[![Activity](https://img.shields.io/github/last-commit/Progyan1997/spring-clean-example?style=for-the-badge&label=most%20recent%20activity)](https://github.com/Progyan1997/spring-clean-example/pulse)
+[![Open Issues](https://img.shields.io/github/issues-raw/0xTheProDev/spring-clean-example?style=for-the-badge)](https://github.com/0xTheProDev/spring-clean-example/issues)
+[![Closed Issues](https://img.shields.io/github/issues-closed-raw/0xTheProDev/spring-clean-example?style=for-the-badge)](https://github.com/0xTheProDev/spring-clean-example/issues?q=is%3Aissue+is%3Aclosed)
+[![Open Pulls](https://img.shields.io/github/issues-pr-raw/0xTheProDev/spring-clean-example?style=for-the-badge)](https://github.com/0xTheProDev/spring-clean-example/pulls)
+[![Closed Pulls](https://img.shields.io/github/issues-pr-closed-raw/0xTheProDev/spring-clean-example?style=for-the-badge)](https://github.com/0xTheProDev/spring-clean-example/pulls?q=is%3Apr+is%3Aclosed)
+[![Contributors](https://img.shields.io/github/contributors/0xTheProDev/spring-clean-example?style=for-the-badge)](https://github.com/0xTheProDev/spring-clean-example/graphs/contributors)
+[![Activity](https://img.shields.io/github/last-commit/0xTheProDev/spring-clean-example?style=for-the-badge&label=most%20recent%20activity)](https://github.com/0xTheProDev/spring-clean-example/pulse)
 
 ## Description
 
